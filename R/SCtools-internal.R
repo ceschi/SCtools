@@ -50,7 +50,7 @@ syn_plac <- function(i,
 										 dataprep.out, 
 										 Sigf.ipop, 
 										 tr, 
-										 names.and.numbers) {
+										 names.and.numbers, optimethod = "Nelder-Mead") {
 	cases <- as.numeric(dataprep.out$tag$controls.identifier)
 	X0 <- dataprep.out$X0[, -i]
 	X1 <- matrix(dataprep.out$X0[, i, drop = F])
@@ -107,7 +107,7 @@ syn_plac <- function(i,
 		tag = tag
 	)
 	s.out <- Synth::synth(data.prep.obj = dp, 
-												Sigf.ipop = Sigf.ipop)
+												Sigf.ipop = Sigf.ipop, optimxmethod = optimethod)
 	a <- data.frame(dp$Y0plot %*% s.out$solution.w)
 	s.mspe <- s.out$loss.v
 	res <- list(a = a, s.mspe = s.mspe)
