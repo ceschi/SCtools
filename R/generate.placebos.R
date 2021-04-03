@@ -99,7 +99,8 @@
 generate.placebos <- function(dataprep.out,
                               synth.out,
                               Sigf.ipop = 5,
-                              strategy = "sequential") {
+                              strategy = "sequential",
+                             .optimethod = "Nelder-Mead") {
   
   # Inputs Checkss
   if(!all(names(dataprep.out) %in% dataprep_object_names)){
@@ -114,7 +115,7 @@ generate.placebos <- function(dataprep.out,
     stop("You have not passed a valid argument for Signf.ipop. Please pass a positive integer")
   }
   
-  strategy_match <- match.arg(strategy, c("sequential", "multiprocess"))
+  strategy_match <- match.arg(strategy, c("sequential", "multiprocess", "multicore", "multisession"))
   
   unit.numbers <- NULL
   
@@ -150,7 +151,8 @@ generate.placebos <- function(dataprep.out,
   mspe2 <- furrr::future_map(1:n, ~syn_plac(.x, 
                                             dataprep.out, 
                                             Sigf.ipop, 
-                                            tr, names.and.numbers))
+                                            tr, names.and.numbers,
+                                           optimethod = .optimethod))
   
   b <- dplyr::bind_cols(purrr::map(mspe2,"a"))
   b <- setNames(b, paste('synthetic', as.character(names.and.numbers[ ,2]), sep = '.'))
