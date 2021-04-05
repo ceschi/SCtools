@@ -159,6 +159,8 @@ generate.placebos <- function(dataprep.out,
   
   mspe.placs <- purrr::map(mspe2, "s.mspe")
   mspe.placs <- as.data.frame(unlist(mspe.placs))
+  
+  ww <- cbind(purrr::map(mspe2, "weights"))
     
   
   on.exit(plan(oplan), add = TRUE)
@@ -185,6 +187,7 @@ generate.placebos <- function(dataprep.out,
   res2 <-
     list(
       df = df,
+      weights.w = ww,
       mspe.placs = mspe.placs,
       t0 = t0,
       t1 = t1,

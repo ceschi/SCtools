@@ -110,7 +110,9 @@ syn_plac <- function(i,
 												Sigf.ipop = Sigf.ipop, optimxmethod = optimethod)
 	a <- data.frame(dp$Y0plot %*% s.out$solution.w)
 	s.mspe <- s.out$loss.v
-	res <- list(a = a, s.mspe = s.mspe)
+	res <- list(a = a, 
+							s.mspe = s.mspe, 
+							weights = s.out$solution.w)
 	return(res)
 }
 
