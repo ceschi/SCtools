@@ -110,10 +110,11 @@ syn_plac <- function(i,
 												Sigf.ipop = Sigf.ipop, optimxmethod = optimethod)
 	a <- data.frame(dp$Y0plot %*% s.out$solution.w)
 	
-	wei <- data.frame(weights = s.out$solution.w,
-										pool = as.numeric(row.names(s.out$solution.w)),
-										treat = cases[i],
-										row.names = NULL)
+	# wei <- data.frame(weights = s.out$solution.w,
+	# 									pool = as.numeric(row.names(s.out$solution.w)),
+	# 									treat = cases[i],
+	# 									row.names = NULL)
+	wei <- s.out$solution.w
 	
 	s.mspe <- s.out$loss.v
 	res <- list(a = a, 

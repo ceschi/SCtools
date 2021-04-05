@@ -160,14 +160,15 @@ generate.placebos <- function(dataprep.out,
   mspe.placs <- purrr::map(mspe2, "s.mspe")
   mspe.placs <- as.data.frame(unlist(mspe.placs))
   
-  ww <- dplyr::bind_rows(purrr::map(mspe2, "weights"))
+  # ww <- dplyr::bind_rows(purrr::map(mspe2, "weights"))
   # names(ww) <- paste0('plac.weights.', names.and.numbers[ ,2])
   # row.names(ww) <- names.and.numbers[,2]
-  ww <- reshape(idvar = 'pool',
-                timevar = 'treat',
-                direction = 'wide')
-  ww <- ww[order(ww$pool),]
-  ww$pool <- NULL
+  # ww <- reshape(idvar = 'pool',
+  #               timevar = 'treat',
+  #               direction = 'wide')
+  # ww <- ww[order(ww$pool),]
+  # ww$pool <- NULL
+  ww <- dplyr::bind_cols(purrr::map(mspe2, 'weights'))
   
   on.exit(plan(oplan), add = TRUE)
   
@@ -193,7 +194,7 @@ generate.placebos <- function(dataprep.out,
   res2 <-
     list(
       df = df,
-      weights.w = ww,
+      weights.w = as.matrix(ww),
       mspe.placs = mspe.placs,
       t0 = t0,
       t1 = t1,
