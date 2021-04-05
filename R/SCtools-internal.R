@@ -112,7 +112,7 @@ syn_plac <- function(i,
 	
 	wei <- data.frame(weights = s.out$solution.w,
 										pool = row.names(s.out$solution.w),
-										treat = dataprep.out$tag$treatment.identifier)
+										treat = cases[i])
 	
 	s.mspe <- s.out$loss.v
 	res <- list(a = a, 
