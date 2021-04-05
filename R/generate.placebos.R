@@ -160,7 +160,7 @@ generate.placebos <- function(dataprep.out,
   mspe.placs <- purrr::map(mspe2, "s.mspe")
   mspe.placs <- as.data.frame(unlist(mspe.placs))
   
-  ww <- rbind(purrr::map(mspe2, "weights"))
+  ww <- dplyr::bind_rows(purrr::map(mspe2, "weights"))
   # names(ww) <- paste0('plac.weights.', names.and.numbers[ ,2])
   # row.names(ww) <- names.and.numbers[,2]
   
