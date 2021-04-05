@@ -109,10 +109,15 @@ syn_plac <- function(i,
 	s.out <- Synth::synth(data.prep.obj = dp, 
 												Sigf.ipop = Sigf.ipop, optimxmethod = optimethod)
 	a <- data.frame(dp$Y0plot %*% s.out$solution.w)
+	
+	wei <- data.frame(weights = s.out$solution.w,
+										pool = row.names(s.out$solution.w),
+										treat = treatment.identifier)
+	
 	s.mspe <- s.out$loss.v
 	res <- list(a = a, 
 							s.mspe = s.mspe, 
-							weights = s.out$solution.w)
+							weights = wei)
 	return(res)
 }
 
