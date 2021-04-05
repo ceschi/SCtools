@@ -163,6 +163,11 @@ generate.placebos <- function(dataprep.out,
   ww <- dplyr::bind_rows(purrr::map(mspe2, "weights"))
   # names(ww) <- paste0('plac.weights.', names.and.numbers[ ,2])
   # row.names(ww) <- names.and.numbers[,2]
+  ww <- reshape(idvar = 'pool',
+                timevar = 'treat',
+                direction = 'wide')
+  ww <- ww[order(ww$pool),]
+  ww$pool <- NULL
   
   on.exit(plan(oplan), add = TRUE)
   

@@ -111,7 +111,7 @@ syn_plac <- function(i,
 	a <- data.frame(dp$Y0plot %*% s.out$solution.w)
 	
 	wei <- data.frame(weights = s.out$solution.w,
-										pool = row.names(s.out$solution.w),
+										pool = as.numeric(row.names(s.out$solution.w)),
 										treat = cases[i],
 										row.names = NULL)
 	
