@@ -1,5 +1,3 @@
-#### Functions
-
 #' @importFrom future plan 
 #' @importFrom stats setNames
 #' @export
@@ -122,7 +120,7 @@ gen_placebos_l1o <- function(dataprep.out,
 	return(res2)
 }
 
-#' @rdname generate.placebos
+#' @rdname generate_placebos_l1o
 #' @export
 
 
