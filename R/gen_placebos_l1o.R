@@ -1,5 +1,10 @@
 #### Functions
 
+#' @importFrom future plan 
+#' @importFrom stats setNames
+#' @export
+
+
 gen_placebos_l1o <- function(dataprep.out,
 															synth.out,
 															l1o = T,
@@ -116,6 +121,9 @@ gen_placebos_l1o <- function(dataprep.out,
 	
 	return(res2)
 }
+
+#' @rdname generate.placebos
+#' @export
 
 
 syn_plac_l1o <- function(i, 
@@ -245,3 +253,21 @@ syn_plac_l1o <- function(i,
 							weights = wei)
 	return(res)
 }
+
+# Names of objects in `Synth`
+
+synth_object_names <- c("solution.v",
+												"solution.w",
+												"loss.v",
+												"loss.w",
+												"custom.v",
+												"rgV.optim")
+
+dataprep_object_names <- c( "X0", 
+														"X1", 
+														"Z0",
+														"Z1",
+														"Y0plot",
+														"Y1plot",
+														"names.and.numbers",
+														"tag" )
