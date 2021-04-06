@@ -9,14 +9,16 @@ generate.placebos(
   dataprep.out,
   synth.out,
   Sigf.ipop = 5,
-  strategy = "sequential"
+  strategy = "sequential",
+  .optimethod = "Nelder-Mead"
 )
 
 generate_placebos(
   dataprep.out,
   synth.out,
   Sigf.ipop = 5,
-  strategy = "sequential"
+  strategy = "sequential",
+  .optimethod = "Nelder-Mead"
 )
 }
 \arguments{
